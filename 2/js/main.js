@@ -1,20 +1,15 @@
-let randomNumber = function (firstNumber, lastNumber) {
+const randomNumber = (firstNumber, lastNumber) => {
   if ((firstNumber < 0) || (lastNumber < 0) || (lastNumber <= firstNumber)) {
-    return false;
+    throw 'Неверные данные';
+  } else {
+    return Math.floor(Math.random() * (lastNumber - firstNumber + 1)) + firstNumber;
   }
-  return Math.floor(Math.random() * (lastNumber - firstNumber + 1)) + firstNumber;
 }
-randomNumber(0, 10);
+randomNumber(-1, 10);
 
 // https://ru.stackoverflow.com/questions/863591/Случайное-число-от-1-до-100
 
-let maxStringLength = function (string, maxLength) {
-  string = string.toString();
-  let length = string.length;
-  if (length <= maxLength) {
-    return true;
-  } else {
-    return false;
-  }
+const maxStringLength = (string, maxLength) => {
+  return (string.length <= maxLength) ? true : false;
 }
 maxStringLength('hihi', 10);
