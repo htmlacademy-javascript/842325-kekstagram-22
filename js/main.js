@@ -9,7 +9,8 @@ const COMMENTS = [
   'Как можно было поймать такой неудачный момент?!',
 ];
 const PEOPLE = ['Николай', 'Вадим', 'Александр', 'Игорь', 'Алексей', 'Валерия'];
-const DISCRIPTION = ['Ночь.', 'Улица.', 'Фонарь.', 'Аптека.'];
+// people же итак во множественном числе?
+const DESCRIPTIONS = ['Ночь.', 'Улица.', 'Фонарь.', 'Аптека.'];
 const INITIAL_COUNT = 25;
 
 const getRandomNumber = (firstNumber, lastNumber) => {
@@ -26,17 +27,17 @@ const getRandomElement = (array) => array[getRandomNumber(0, array.length - 1)];
 const getRandomComment = () => {
   return {
     id: getRandomId(),
-    avatar: 'img/avatar-' + getRandomNumber(1, 6) + '.svg',
-    message: new Array(getRandomNumber(1, 2)).fill(null).map(() => getRandomElement(COMMENTS)),
+    avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+    message: generateArayWithInfo(getRandomNumber(1, 2), () => getRandomElement(COMMENTS)),
     name: getRandomElement(PEOPLE),
   };
 };
 
 const getRandomDescriptionPhoto = (k) => {
   return {
-    id: idArray[k - 1],
-    url: 'photos/' + urlArray[k - 1] + '.jpg',
-    description: getRandomElement(DISCRIPTION),
+    id: generateUnicNumbers()[k],
+    url: `photos/${generateUnicNumbers()[k]}.jpg`,
+    description: getRandomElement(DESCRIPTIONS),
     likes: getRandomNumber(15, 200),
     comments: generateArayWithInfo(getRandomNumber(1, 5), (() => getRandomComment())),
   };
@@ -45,9 +46,6 @@ const getRandomDescriptionPhoto = (k) => {
 const getRandomId = () => Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
 
 const generateUnicNumbers = (from = 1, to = INITIAL_COUNT, n = to) => [...Array(to - from + 1).keys()].map(i => i + from).reduce((arr, el) => (arr.splice(Math.random() * (arr.length + 1), 0, el), arr), []).slice(0, n);
-
-const idArray = generateUnicNumbers();
-const urlArray = generateUnicNumbers();
 
 const descriptionPhotoList = generateArayWithInfo(INITIAL_COUNT, (_, k) => getRandomDescriptionPhoto(k));
 console.log(descriptionPhotoList);
