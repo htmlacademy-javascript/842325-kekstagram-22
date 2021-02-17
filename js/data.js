@@ -1,4 +1,9 @@
-import { getRandomNumber } from 'util.js';
+import { getRandomNumber } from './util.js';
+import { generateArayWithInfo } from './util.js';
+import { getRandomElement } from './util.js';
+import { getRandomId } from './util.js';
+import { generateUnicNumbers } from './util.js';
+// // import 'util.js';
 
 const COMMENTS = [
   'Всё отлично!',
@@ -13,10 +18,6 @@ const COMMENTS = [
 const PEOPLE = ['Николай', 'Вадим', 'Александр', 'Игорь', 'Алексей', 'Валерия'];
 const DESCRIPTIONS = ['Ночь.', 'Улица.', 'Фонарь.', 'Аптека.'];
 const INITIAL_COUNT = 25;
-
-const generateArayWithInfo = (length, cb) => new Array(length).fill().map(cb);
-
-const getRandomElement = (array) => array[getRandomNumber(0, array.length - 1)];
 
 const getRandomComment = () => {
   return {
@@ -33,15 +34,34 @@ const getRandomDescriptionPhoto = (k, generateUnicId = generateUnicNumbers(), ge
     url: `photos/${generateUnicUrl[k]}.jpg`,
     description: getRandomElement(DESCRIPTIONS),
     likes: getRandomNumber(15, 200),
-    comments: generateArayWithInfo(getRandomNumber(1, 5), (() => getRandomComment())),
+    comments: generateArayWithInfo(getRandomNumber(5, 10), (() => getRandomComment())),
   };
 };
 
-const getRandomId = () => Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
-
-const generateUnicNumbers = (from = 1, to = INITIAL_COUNT, n = to) => [...Array(to - from + 1).keys()].map(i => i + from).reduce((arr, el) => (arr.splice(Math.random() * (arr.length + 1), 0, el), arr), []).slice(0, n);
-
 const descriptionPhotoList = generateArayWithInfo(INITIAL_COUNT, (_, k) => getRandomDescriptionPhoto(k));
-console.log(descriptionPhotoList);
+
+export { descriptionPhotoList };
 
 
+
+
+
+
+
+
+
+
+
+
+//тестовый импорт
+// import { testFunction2 } from './util.js';
+
+// let testFunction = () => {
+//   console.log('ok1');
+
+//   testFunction2();
+
+
+// }
+
+// export { testFunction };
