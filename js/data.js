@@ -7,7 +7,8 @@ import { generateUnicNumbers } from './util.js';
 
 const COMMENTS = [
   'Всё отлично!',
-  'В целом всё неплохо.Но не всё.',
+  'В целом всё неплохо.',
+  'Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра.',
   'В конце концов это просто непрофессионально.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
@@ -34,7 +35,7 @@ const getRandomDescriptionPhoto = (k, generateUnicId = generateUnicNumbers(), ge
     url: `photos/${generateUnicUrl[k]}.jpg`,
     description: getRandomElement(DESCRIPTIONS),
     likes: getRandomNumber(15, 200),
-    comments: generateArayWithInfo(getRandomNumber(5, 10), (() => getRandomComment())),
+    comments: generateArayWithInfo(getRandomNumber(6, 10), (() => getRandomComment())),
   };
 };
 

@@ -5,17 +5,17 @@ const pictures = document.querySelector('.pictures');
 const randomArray = descriptionPhotoList;
 
 const addHtmlCard = (current) => {
-  let picture = templatePicture.cloneNode(true);
+  const picture = templatePicture.cloneNode(true);
 
-  let img = picture.querySelector('.picture__img');
+  const img = picture.querySelector('.picture__img');
   img.src = randomArray[current].url;
 
-  let info = picture.querySelector('.picture__info');
+  const info = picture.querySelector('.picture__info');
 
-  let comments = info.querySelector('.picture__comments');
+  const comments = info.querySelector('.picture__comments');
   comments.textContent = randomArray[current].comments.length;
 
-  let likes = info.querySelector('.picture__likes');
+  const likes = info.querySelector('.picture__likes');
   likes.textContent = randomArray[current].likes;
 
   return picture;
