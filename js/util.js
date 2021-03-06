@@ -18,6 +18,16 @@ export { generateArayWithInfo };
 export { getRandomElement };
 export { getRandomId };
 export { generateUnicNumbers };
+export { openModal };
+export { closeModal };
 
 // const isAllowedString = (string, maxLength) => (string.length <= maxLength) ? true : false;
 // isAllowedString('hihi', 10);
+const openModal = (element, body, hidden, open) => {
+  element.classList.remove(hidden);
+  body.classList.add(open);
+}
+const closeModal = (element, body, hidden, open) => {
+  element.classList.add(hidden);
+  body.classList.remove(open);
+}
