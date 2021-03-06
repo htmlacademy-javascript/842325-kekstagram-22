@@ -1,3 +1,5 @@
 import './show.js';
 import './show-full.js'
-import './form.js'
+import './uploadForm.js'
+import './scale.js'
+// import './form.js'
