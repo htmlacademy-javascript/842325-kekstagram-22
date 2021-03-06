@@ -1,6 +1,7 @@
 
 import { pictures as currentPictures } from './show.js';
 import { randomArray as randomPhotoList } from './show.js';
+import { closeModal, openModal } from './util.js';
 
 const HIDDEN_STATE = 'hidden';
 const OPEN_MODAL_STATE = 'modal-open';
@@ -22,8 +23,9 @@ const listFragment = document.createDocumentFragment();
 
 currentPicturesList.forEach((currentPicture, index) => {
   currentPicture.addEventListener('click', () => {
-    pageBody.classList.add(OPEN_MODAL_STATE);
-    bigPictureBlock.classList.remove(HIDDEN_STATE);
+    openModal(bigPictureBlock, pageBody, HIDDEN_STATE, OPEN_MODAL_STATE);
+
+
     commentCount.classList.add(HIDDEN_STATE);
     newPicturesButton.classList.add(HIDDEN_STATE);
 
@@ -61,20 +63,21 @@ const getAllComments = (currentElement) => {
 
 
 bigPictureCloseButton.addEventListener('click', () => {
-  bigPictureBlock.classList.add(HIDDEN_STATE);
-  pageBody.classList.remove(OPEN_MODAL_STATE);
+  closeModal(bigPictureBlock, pageBody, HIDDEN_STATE, OPEN_MODAL_STATE);
 });
 document.addEventListener('keydown', (evt) => {
   if (evt.keyCode === 27) {
-    bigPictureBlock.classList.add(HIDDEN_STATE);
-    pageBody.classList.remove(OPEN_MODAL_STATE);
+    closeModal(bigPictureBlock, pageBody, HIDDEN_STATE, OPEN_MODAL_STATE);
   }
 })
 
 
 
+export { HIDDEN_STATE };
 
 
+export { pageBody };
+export { OPEN_MODAL_STATE };
 
 
 
